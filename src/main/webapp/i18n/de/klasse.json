@@ -1,0 +1,24 @@
+{
+    "srmsApp": {
+        "klasse" : {
+            "home": {
+                "title": "Klasses",
+                "createLabel": "Klasse erstellen",
+                "createOrEditLabel": "Klasse erstellen oder bearbeiten"
+            },
+            "created": "Klasse erstellt mit ID {{ param }}",
+            "updated": "Klasse aktualisiert mit ID {{ param }}",
+            "deleted": "Klasse gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Klasse {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Klasse"
+            },
+            "name": "Name",
+            "klasseFach": "Klasse Fach",
+            "klasse": "Klasse",
+            "lehrer": "Lehrer"
+        }
+    }
+}

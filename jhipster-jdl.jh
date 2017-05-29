@@ -1,0 +1,79 @@
+enum Zeugnis_typ {
+	HALBJAHRESZEUGNIS, ZEUGNIS, ABSCHLUSSZEUGNISS
+}
+enum Schulform {
+	HAUPTSCHULE, REALSCHULE, GYMNASIUM, BERUFSCHULE, FACHOBERSCHULE
+}
+
+entity Schueler {
+    name String required,
+    vorname String required, 
+  	schulform Schulform required
+}
+
+entity Zeugnis {	
+	sozialverhalten Integer,
+    arbeitsverhalten Integer,
+	datum ZonedDateTime required,
+	zeugnistyp Zeugnis_typ required,    
+}
+
+entity Schulform {
+	bezeichnung String required
+}
+
+entity Klasse {
+	name String required
+}
+
+entity Lehrer {
+	vorname String required,
+    namen String required,
+}
+
+entity Fehlzeiten {
+	datum ZonedDateTime required,
+    dauer Integer required,
+}
+
+entity Fach {
+    name String required,
+}
+
+entity Anschrift {
+	ort String required,
+    postleitzahl Integer required,
+    strassenname String required,
+    hausnummer Integer required,
+}
+entity ZeugnisFach {
+	note Integer
+}
+
+entity KlasseFach {
+ 
+}
+
+relationship OneToMany {
+	Klasse{klasseFach_} to KlasseFach,
+    Fach{fufu} to KlasseFach,
+	Lehrer{unterrichtet} to KlasseFach,
+	Fach{fach_} to ZeugnisFach,
+    Zeugnis{fach_} to ZeugnisFach, 
+    Anschrift{anschrift_} to Schueler, 
+    Klasse{klasse_} to Schueler, 
+    Schueler{schueler_} to Zeugnis,
+    Schueler{fehlzeiten_} to Fehlzeiten,     
+    Lehrer{klassenlehrer} to Klasse
+}
+
+// Set pagination options
+paginate Zeugnis with infinite-scroll
+paginate Zeugnis with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with mySuffix

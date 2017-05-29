@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "zeugnis",
+            "otherEntityName": "zeugnis",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "fach",
+            "otherEntityName": "fach",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "note",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170529164423",
+    "entityTableName": "zeugnis_fach",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "angularJSSuffix": "mySuffix"
+}

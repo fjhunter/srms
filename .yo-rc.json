@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.srms",
+      "nativeLanguage": "de"
+    },
+    "jhipsterVersion": "4.5.1",
+    "baseName": "srms",
+    "packageName": "com.srms",
+    "packageFolder": "com/srms",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "hibernateCache": "no",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "92ffeabe14f881f8ea5274a1c1668eac436e087e",
+    "clientFramework": "angular2",
+    "useSass": false,
+    "clientPackageManager": "yarn",
+    "applicationType": "monolith",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "de",
+    "languages": [
+      "de"
+    ]
+  }
+}

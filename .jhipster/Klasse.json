@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "klasseFach",
+            "otherEntityName": "klasseFach",
+            "otherEntityRelationshipName": "klasse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "klasse",
+            "otherEntityName": "schueler",
+            "otherEntityRelationshipName": "klasse"
+        },
+        {
+            "relationshipName": "lehrer",
+            "otherEntityName": "lehrer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170529164418",
+    "entityTableName": "klasse",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "angularJSSuffix": "mySuffix"
+}

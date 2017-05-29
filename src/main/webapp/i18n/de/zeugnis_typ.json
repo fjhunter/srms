@@ -1,0 +1,10 @@
+{
+    "srmsApp": {
+        "Zeugnis_typ" : {
+            "null": "",
+            "HALBJAHRESZEUGNIS": "HALBJAHRESZEUGNIS",
+            "ZEUGNIS": "ZEUGNIS",
+            "ABSCHLUSSZEUGNISS": "ABSCHLUSSZEUGNISS"
+        }
+    }
+}

@@ -1,0 +1,79 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySchuelerLabel" jhiTranslate="srmsApp.schueler.home.createOrEditLabel">Create or edit a Schueler</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!schueler.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="schueler.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="srmsApp.schueler.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="schueler.name"
+            required />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="srmsApp.schueler.vorname" for="field_vorname">Vorname</label>
+            <input type="text" class="form-control" name="vorname" id="field_vorname"
+                [(ngModel)]="schueler.vorname"
+            required />
+            <div [hidden]="!(editForm.controls.vorname?.dirty && editForm.controls.vorname?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vorname?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="srmsApp.schueler.schulform" for="field_schulform">Schulform</label>
+            <select class="form-control" name="schulform" [(ngModel)]="schueler.schulform" id="field_schulform"  required>
+                <option value="HAUPTSCHULE" jhiTranslate="srmsApp.Schulform.HAUPTSCHULE">HAUPTSCHULE</option>
+                <option value="REALSCHULE" jhiTranslate="srmsApp.Schulform.REALSCHULE">REALSCHULE</option>
+                <option value="GYMNASIUM" jhiTranslate="srmsApp.Schulform.GYMNASIUM">GYMNASIUM</option>
+                <option value="BERUFSCHULE" jhiTranslate="srmsApp.Schulform.BERUFSCHULE">BERUFSCHULE</option>
+                <option value="FACHOBERSCHULE" jhiTranslate="srmsApp.Schulform.FACHOBERSCHULE">FACHOBERSCHULE</option>
+            </select>
+            <div [hidden]="!(editForm.controls.schulform?.dirty && editForm.controls.schulform?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.schulform?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="srmsApp.schueler.klasse" for="field_klasse">Klasse</label>
+            <select class="form-control" id="field_klasse" name="klasse" [(ngModel)]="schueler.klasseId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="klasseOption.id" *ngFor="let klasseOption of klasses; trackBy: trackKlasseById">{{klasseOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="srmsApp.schueler.anschrift" for="field_anschrift">Anschrift</label>
+            <select class="form-control" id="field_anschrift" name="anschrift" [(ngModel)]="schueler.anschriftId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="anschriftOption.id" *ngFor="let anschriftOption of anschrifts; trackBy: trackAnschriftById">{{anschriftOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

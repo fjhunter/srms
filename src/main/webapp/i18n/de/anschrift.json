@@ -1,0 +1,25 @@
+{
+    "srmsApp": {
+        "anschrift" : {
+            "home": {
+                "title": "Anschrifts",
+                "createLabel": "Anschrift erstellen",
+                "createOrEditLabel": "Anschrift erstellen oder bearbeiten"
+            },
+            "created": "Anschrift erstellt mit ID {{ param }}",
+            "updated": "Anschrift aktualisiert mit ID {{ param }}",
+            "deleted": "Anschrift gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Anschrift {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Anschrift"
+            },
+            "ort": "Ort",
+            "postleitzahl": "Postleitzahl",
+            "strassenname": "Strassenname",
+            "hausnummer": "Hausnummer",
+            "anschrift": "Anschrift"
+        }
+    }
+}

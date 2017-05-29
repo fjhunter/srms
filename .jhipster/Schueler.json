@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "schueler",
+            "otherEntityName": "zeugnis",
+            "otherEntityRelationshipName": "schueler"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "fehlzeiten",
+            "otherEntityName": "fehlzeiten",
+            "otherEntityRelationshipName": "schueler"
+        },
+        {
+            "relationshipName": "klasse",
+            "otherEntityName": "klasse",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "anschrift",
+            "otherEntityName": "anschrift",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vorname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "schulform",
+            "fieldType": "Schulform",
+            "fieldValues": "HAUPTSCHULE,REALSCHULE,GYMNASIUM,BERUFSCHULE,FACHOBERSCHULE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170529164415",
+    "entityTableName": "schueler",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "angularJSSuffix": "mySuffix"
+}

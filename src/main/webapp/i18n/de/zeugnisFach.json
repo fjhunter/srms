@@ -1,0 +1,23 @@
+{
+    "srmsApp": {
+        "zeugnisFach" : {
+            "home": {
+                "title": "Zeugnis Faches",
+                "createLabel": "Zeugnis Fach erstellen",
+                "createOrEditLabel": "Zeugnis Fach erstellen oder bearbeiten"
+            },
+            "created": "Zeugnis Fach erstellt mit ID {{ param }}",
+            "updated": "Zeugnis Fach aktualisiert mit ID {{ param }}",
+            "deleted": "Zeugnis Fach gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Zeugnis Fach {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Zeugnis Fach"
+            },
+            "note": "Note",
+            "zeugnis": "Zeugnis",
+            "fach": "Fach"
+        }
+    }
+}

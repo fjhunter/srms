@@ -1,0 +1,43 @@
+
+<div *ngIf="zeugnis">
+    <h2><span jhiTranslate="srmsApp.zeugnis.detail.title">Zeugnis</span> {{zeugnis.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="srmsApp.zeugnis.sozialverhalten">Sozialverhalten</span></dt>
+        <dd>
+            <span>{{zeugnis.sozialverhalten}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.zeugnis.arbeitsverhalten">Arbeitsverhalten</span></dt>
+        <dd>
+            <span>{{zeugnis.arbeitsverhalten}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.zeugnis.datum">Datum</span></dt>
+        <dd>
+            <span>{{zeugnis.datum | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.zeugnis.zeugnistyp">Zeugnistyp</span></dt>
+        <dd>
+            <span jhiTranslate="{{'srmsApp.Zeugnis_typ.' + zeugnis.zeugnistyp}}">{{zeugnis.zeugnistyp}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.zeugnis.schueler">Schueler</span></dt>
+        <dd>
+            <div *ngIf="zeugnis.schuelerId">
+                <a [routerLink]="['/schueler-my-suffix', zeugnis.schuelerId]">{{zeugnis.schuelerId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'zeugnis-my-suffix/'+ zeugnis.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

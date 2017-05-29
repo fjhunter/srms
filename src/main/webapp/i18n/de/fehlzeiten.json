@@ -1,0 +1,23 @@
+{
+    "srmsApp": {
+        "fehlzeiten" : {
+            "home": {
+                "title": "Fehlzeitens",
+                "createLabel": "Fehlzeiten erstellen",
+                "createOrEditLabel": "Fehlzeiten erstellen oder bearbeiten"
+            },
+            "created": "Fehlzeiten erstellt mit ID {{ param }}",
+            "updated": "Fehlzeiten aktualisiert mit ID {{ param }}",
+            "deleted": "Fehlzeiten gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Fehlzeiten {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Fehlzeiten"
+            },
+            "datum": "Datum",
+            "dauer": "Dauer",
+            "schueler": "Schueler"
+        }
+    }
+}

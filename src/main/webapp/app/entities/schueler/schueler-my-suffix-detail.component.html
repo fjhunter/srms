@@ -1,0 +1,45 @@
+
+<div *ngIf="schueler">
+    <h2><span jhiTranslate="srmsApp.schueler.detail.title">Schueler</span> {{schueler.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="srmsApp.schueler.name">Name</span></dt>
+        <dd>
+            <span>{{schueler.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.schueler.vorname">Vorname</span></dt>
+        <dd>
+            <span>{{schueler.vorname}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.schueler.schulform">Schulform</span></dt>
+        <dd>
+            <span jhiTranslate="{{'srmsApp.Schulform.' + schueler.schulform}}">{{schueler.schulform}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.schueler.klasse">Klasse</span></dt>
+        <dd>
+            <div *ngIf="schueler.klasseId">
+                <a [routerLink]="['/klasse-my-suffix', schueler.klasseId]">{{schueler.klasseId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.schueler.anschrift">Anschrift</span></dt>
+        <dd>
+            <div *ngIf="schueler.anschriftId">
+                <a [routerLink]="['/anschrift-my-suffix', schueler.anschriftId]">{{schueler.anschriftId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'schueler-my-suffix/'+ schueler.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

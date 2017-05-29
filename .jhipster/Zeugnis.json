@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "schueler",
+            "otherEntityName": "schueler",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "fach",
+            "otherEntityName": "zeugnisFach",
+            "otherEntityRelationshipName": "zeugnis"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "sozialverhalten",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "arbeitsverhalten",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "datum",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "zeugnistyp",
+            "fieldType": "Zeugnis_typ",
+            "fieldValues": "HALBJAHRESZEUGNIS,ZEUGNIS,ABSCHLUSSZEUGNISS",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170529164416",
+    "entityTableName": "zeugnis",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "mySuffix"
+}

@@ -1,0 +1,23 @@
+{
+    "srmsApp": {
+        "fach" : {
+            "home": {
+                "title": "Faches",
+                "createLabel": "Fach erstellen",
+                "createOrEditLabel": "Fach erstellen oder bearbeiten"
+            },
+            "created": "Fach erstellt mit ID {{ param }}",
+            "updated": "Fach aktualisiert mit ID {{ param }}",
+            "deleted": "Fach gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Fach {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Fach"
+            },
+            "name": "Name",
+            "fufu": "Fufu",
+            "fach": "Fach"
+        }
+    }
+}

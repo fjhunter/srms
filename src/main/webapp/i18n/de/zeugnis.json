@@ -1,0 +1,26 @@
+{
+    "srmsApp": {
+        "zeugnis" : {
+            "home": {
+                "title": "Zeugnis",
+                "createLabel": "Zeugnis erstellen",
+                "createOrEditLabel": "Zeugnis erstellen oder bearbeiten"
+            },
+            "created": "Zeugnis erstellt mit ID {{ param }}",
+            "updated": "Zeugnis aktualisiert mit ID {{ param }}",
+            "deleted": "Zeugnis gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Zeugnis {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Zeugnis"
+            },
+            "sozialverhalten": "Sozialverhalten",
+            "arbeitsverhalten": "Arbeitsverhalten",
+            "datum": "Datum",
+            "zeugnistyp": "Zeugnistyp",
+            "schueler": "Schueler",
+            "fach": "Fach"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+
+<div *ngIf="fehlzeiten">
+    <h2><span jhiTranslate="srmsApp.fehlzeiten.detail.title">Fehlzeiten</span> {{fehlzeiten.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="srmsApp.fehlzeiten.datum">Datum</span></dt>
+        <dd>
+            <span>{{fehlzeiten.datum | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.fehlzeiten.dauer">Dauer</span></dt>
+        <dd>
+            <span>{{fehlzeiten.dauer}}</span>
+        </dd>
+        <dt><span jhiTranslate="srmsApp.fehlzeiten.schueler">Schueler</span></dt>
+        <dd>
+            <div *ngIf="fehlzeiten.schuelerId">
+                <a [routerLink]="['/schueler-my-suffix', fehlzeiten.schuelerId]">{{fehlzeiten.schuelerId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'fehlzeiten-my-suffix/'+ fehlzeiten.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

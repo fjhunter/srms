@@ -1,0 +1,21 @@
+{
+    "srmsApp": {
+        "schulform" : {
+            "home": {
+                "title": "Schulforms",
+                "createLabel": "Schulform erstellen",
+                "createOrEditLabel": "Schulform erstellen oder bearbeiten"
+            },
+            "created": "Schulform erstellt mit ID {{ param }}",
+            "updated": "Schulform aktualisiert mit ID {{ param }}",
+            "deleted": "Schulform gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Schulform {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Schulform"
+            },
+            "bezeichnung": "Bezeichnung"
+        }
+    }
+}

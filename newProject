@@ -1,0 +1,8 @@
+sudo rm -rf srms/
+mkdir srms/
+cd srms/
+yo jhipster
+mv /home/fj/Downloads/jhipster-jdl.jh ./
+jhipster import-jdl jhipster-jdl.jh
+echo "delete database"
+

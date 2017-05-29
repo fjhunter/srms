@@ -1,0 +1,14 @@
+version: '2'
+services:
+    srms-app:
+        image: srms
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://srms-postgresql:5432/srms
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    srms-postgresql:
+        extends:
+            file: postgresql.yml
+            service: srms-postgresql

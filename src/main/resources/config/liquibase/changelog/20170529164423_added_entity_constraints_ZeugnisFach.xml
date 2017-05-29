@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity ZeugnisFach.
+    -->
+    <changeSet id="20170529164423-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="zeugnis_id"
+                                 baseTableName="zeugnis_fach"
+                                 constraintName="fk_zeugnis_fach_zeugnis_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zeugnis"/>
+
+        <addForeignKeyConstraint baseColumnNames="fach_id"
+                                 baseTableName="zeugnis_fach"
+                                 constraintName="fk_zeugnis_fach_fach_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fach"/>
+
+    </changeSet>
+</databaseChangeLog>

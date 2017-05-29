@@ -1,0 +1,81 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAnschriftLabel" jhiTranslate="srmsApp.anschrift.home.createOrEditLabel">Create or edit a Anschrift</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!anschrift.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="anschrift.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="srmsApp.anschrift.ort" for="field_ort">Ort</label>
+            <input type="text" class="form-control" name="ort" id="field_ort"
+                [(ngModel)]="anschrift.ort"
+            required />
+            <div [hidden]="!(editForm.controls.ort?.dirty && editForm.controls.ort?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ort?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="srmsApp.anschrift.postleitzahl" for="field_postleitzahl">Postleitzahl</label>
+            <input type="number" class="form-control" name="postleitzahl" id="field_postleitzahl"
+                [(ngModel)]="anschrift.postleitzahl"
+            required />
+            <div [hidden]="!(editForm.controls.postleitzahl?.dirty && editForm.controls.postleitzahl?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.postleitzahl?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.postleitzahl?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="srmsApp.anschrift.strassenname" for="field_strassenname">Strassenname</label>
+            <input type="text" class="form-control" name="strassenname" id="field_strassenname"
+                [(ngModel)]="anschrift.strassenname"
+            required />
+            <div [hidden]="!(editForm.controls.strassenname?.dirty && editForm.controls.strassenname?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.strassenname?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="srmsApp.anschrift.hausnummer" for="field_hausnummer">Hausnummer</label>
+            <input type="number" class="form-control" name="hausnummer" id="field_hausnummer"
+                [(ngModel)]="anschrift.hausnummer"
+            required />
+            <div [hidden]="!(editForm.controls.hausnummer?.dirty && editForm.controls.hausnummer?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.hausnummer?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.hausnummer?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

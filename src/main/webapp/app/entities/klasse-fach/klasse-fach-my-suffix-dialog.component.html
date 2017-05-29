@@ -1,0 +1,46 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myKlasseFachLabel" jhiTranslate="srmsApp.klasseFach.home.createOrEditLabel">Create or edit a Klasse Fach</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!klasseFach.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="klasseFach.id" readonly />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="srmsApp.klasseFach.klasse" for="field_klasse">Klasse</label>
+            <select class="form-control" id="field_klasse" name="klasse" [(ngModel)]="klasseFach.klasseId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="klasseOption.id" *ngFor="let klasseOption of klasses; trackBy: trackKlasseById">{{klasseOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="srmsApp.klasseFach.lehrer" for="field_lehrer">Lehrer</label>
+            <select class="form-control" id="field_lehrer" name="lehrer" [(ngModel)]="klasseFach.lehrerId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="lehrerOption.id" *ngFor="let lehrerOption of lehrers; trackBy: trackLehrerById">{{lehrerOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="srmsApp.klasseFach.fach" for="field_fach">Fach</label>
+            <select class="form-control" id="field_fach" name="fach" [(ngModel)]="klasseFach.fachId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="fachOption.id" *ngFor="let fachOption of faches; trackBy: trackFachById">{{fachOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

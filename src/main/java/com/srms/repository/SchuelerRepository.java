@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.util.List;
+
 
 /**
  * Spring Data JPA repository for the Schueler entity.
@@ -13,4 +15,5 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface SchuelerRepository extends JpaRepository<Schueler,Long> {
 
+    List<Schueler> findByKlasse_LehrerId(Long lehrerId);
 }

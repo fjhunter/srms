@@ -1,6 +1,8 @@
 package com.srms.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.srms.domain.Schueler;
+import com.srms.repository.SchuelerRepository;
 import com.srms.service.SchuelerService;
 import com.srms.web.rest.util.HeaderUtil;
 import com.srms.service.dto.SchuelerDTO;
@@ -27,11 +29,14 @@ public class SchuelerResource {
     private final Logger log = LoggerFactory.getLogger(SchuelerResource.class);
 
     private static final String ENTITY_NAME = "schueler";
-        
+
     private final SchuelerService schuelerService;
 
-    public SchuelerResource(SchuelerService schuelerService) {
+    private final SchuelerRepository schuelerRepository;
+
+    public SchuelerResource(SchuelerService schuelerService, SchuelerRepository schuelerRepository) {
         this.schuelerService = schuelerService;
+        this.schuelerRepository = schuelerRepository;
     }
 
     /**
@@ -116,4 +121,8 @@ public class SchuelerResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    @RequestMapping("schuelerFromLehrerId/{id}")
+    public List<Schueler> getSchuelerFromLeherId(@PathVariable Long id) {
+        return schuelerRepository.findByKlasse_LehrerId(id);
+    }
 }

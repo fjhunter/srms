@@ -78,7 +78,7 @@ public class SchuelerResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        SchuelerResource schuelerResource = new SchuelerResource(schuelerService);
+        SchuelerResource schuelerResource = new SchuelerResource(schuelerService,schuelerRepository);
         this.restSchuelerMockMvc = MockMvcBuilders.standaloneSetup(schuelerResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

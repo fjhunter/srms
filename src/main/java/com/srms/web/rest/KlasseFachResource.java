@@ -1,9 +1,12 @@
 package com.srms.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.srms.repository.KlasseFachRepository;
 import com.srms.service.KlasseFachService;
-import com.srms.web.rest.util.HeaderUtil;
 import com.srms.service.dto.KlasseFachDTO;
+import com.srms.service.mapper.KlasseFachMapper;
+import com.srms.service.mapper.KlasseFachMapperImpl;
+import com.srms.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -26,11 +28,16 @@ public class KlasseFachResource {
     private final Logger log = LoggerFactory.getLogger(KlasseFachResource.class);
 
     private static final String ENTITY_NAME = "klasseFach";
-        
+
     private final KlasseFachService klasseFachService;
 
-    public KlasseFachResource(KlasseFachService klasseFachService) {
+    private final KlasseFachRepository klasseFachRepository;
+    KlasseFachMapper klasseFachMapper;
+
+    public KlasseFachResource(KlasseFachService klasseFachService, KlasseFachRepository klasseFachRepository) {
         this.klasseFachService = klasseFachService;
+        this.klasseFachRepository = klasseFachRepository;
+        klasseFachMapper = new KlasseFachMapperImpl();
     }
 
     /**
@@ -115,4 +122,9 @@ public class KlasseFachResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    @RequestMapping("/getKlasseFachByLehrer/{id}")
+    public List<KlasseFachDTO> getKlasseFachByLehrer(@PathVariable Long id) {
+        List<KlasseFachDTO> tmp = klasseFachMapper.toDto(klasseFachRepository.findByLehrerId(id));
+        return tmp;
+    }
 }

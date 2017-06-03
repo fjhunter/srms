@@ -123,6 +123,7 @@ public class SchuelerResource {
 
     @RequestMapping("schuelerFromLehrerId/{id}")
     public List<Schueler> getSchuelerFromLeherId(@PathVariable Long id) {
-        return schuelerRepository.findByKlasse_LehrerId(id);
+        List<Schueler> schueler = schuelerRepository.findByKlasse_KlasseFachesLehrerId(id);
+        return schueler;
     }
 }

@@ -30,7 +30,7 @@
                 <td><a [routerLink]="['../schueler-my-suffix', schueler.id ]">{{schueler.id}}</a></td>
                 <td>{{schueler.name}}</td>
                 <td>{{schueler.vorname}}</td>
-                <td jhiTranslate="{{'srmsApp.Schulform.' + schueler.schulform}}">{{schueler.schulform}}</td>
+                <td >{{schueler.schulform}}</td>
                 <td>
                     <div *ngIf="schueler.klasseId">
                         <a [routerLink]="['../klasse-my-suffix', schueler.klasseId  ]" >{{schueler.klasseId}}</a>

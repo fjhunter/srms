@@ -18,6 +18,7 @@
                 "zeugnisFachMySuffix": "Zeugnis Fach",
                 "klasseFachMySuffix": "Klasse Fach",
                 "createZeugnis": "Create Zeugnis",
+                "printZeugnis": "Print Zeugnis",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

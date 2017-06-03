@@ -2,39 +2,34 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { SchuelerMySuffix } from './schueler-my-suffix.model';
+import { PrintZeugnis } from './print-zeugnis.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
-export class SchuelerMySuffixService {
+export class PrintZeugnisService {
 
-    private resourceUrl = 'api/schuelers';
+    private resourceUrl = 'api/print-zeugnis';
 
     constructor(private http: Http) { }
 
-    create(schueler: SchuelerMySuffix): Observable<SchuelerMySuffix> {
-        const copy = this.convert(schueler);
+    create(printZeugnis: PrintZeugnis): Observable<PrintZeugnis> {
+        const copy = this.convert(printZeugnis);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
     }
 
-    update(schueler: SchuelerMySuffix): Observable<SchuelerMySuffix> {
-        const copy = this.convert(schueler);
+    update(printZeugnis: PrintZeugnis): Observable<PrintZeugnis> {
+        const copy = this.convert(printZeugnis);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
     }
 
-    find(id: number): Observable<SchuelerMySuffix> {
+    find(id: number): Observable<PrintZeugnis> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             return res.json();
         });
-    }
-
-    getByKlasse(id: number): Observable<ResponseWrapper> {
-        return this.http.get('/api/schuelerByKlass/'+id)
-            .map((res: Response) => this.convertResponse(res))
     }
 
     query(req?: any): Observable<ResponseWrapper> {
@@ -52,8 +47,8 @@ export class SchuelerMySuffixService {
         return new ResponseWrapper(res.headers, jsonResponse);
     }
 
-    private convert(schueler: SchuelerMySuffix): SchuelerMySuffix {
-        const copy: SchuelerMySuffix = Object.assign({}, schueler);
+    private convert(printZeugnis: PrintZeugnis): PrintZeugnis {
+        const copy: PrintZeugnis = Object.assign({}, printZeugnis);
         return copy;
     }
 }

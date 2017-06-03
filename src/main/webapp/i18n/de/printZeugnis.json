@@ -1,0 +1,20 @@
+{
+    "srmsApp": {
+        "printZeugnis" : {
+            "home": {
+                "title": "Print Zeugnis",
+                "createLabel": "Print Zeugnis erstellen",
+                "createOrEditLabel": "Print Zeugnis erstellen oder bearbeiten"
+            },
+            "created": "Print Zeugnis erstellt mit ID {{ param }}",
+            "updated": "Print Zeugnis aktualisiert mit ID {{ param }}",
+            "deleted": "Print Zeugnis gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Print Zeugnis {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Print Zeugnis"
+            }
+        }
+    }
+}

@@ -14,6 +14,7 @@ import {
     createZeugnisRoute,
     createZeugnisPopupRoute,
 } from './';
+import {ZeugnisService} from "./zeugnis.zervice";
 
 const ENTITY_STATES = [
     ...createZeugnisRoute,
@@ -43,6 +44,7 @@ const ENTITY_STATES = [
     providers: [
         CreateZeugnisService,
         CreateZeugnisPopupService,
+        ZeugnisService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

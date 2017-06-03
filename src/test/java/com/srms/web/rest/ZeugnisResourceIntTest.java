@@ -86,7 +86,7 @@ public class ZeugnisResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        ZeugnisResource zeugnisResource = new ZeugnisResource(zeugnisService);
+        ZeugnisResource zeugnisResource = new ZeugnisResource(zeugnisService, zeugnisRepository);
         this.restZeugnisMockMvc = MockMvcBuilders.standaloneSetup(zeugnisResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

@@ -68,7 +68,7 @@ public class KlasseFachResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        KlasseFachResource klasseFachResource = new KlasseFachResource(klasseFachService);
+        KlasseFachResource klasseFachResource = new KlasseFachResource(klasseFachService, klasseFachRepository);
         this.restKlasseFachMockMvc = MockMvcBuilders.standaloneSetup(klasseFachResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

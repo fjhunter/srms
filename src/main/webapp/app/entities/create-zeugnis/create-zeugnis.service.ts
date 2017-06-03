@@ -2,38 +2,34 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { KlasseFachMySuffix } from './klasse-fach-my-suffix.model';
+import { CreateZeugnis } from './create-zeugnis.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
-export class KlasseFachMySuffixService {
+export class CreateZeugnisService {
 
-    private resourceUrl = 'api/klasse-faches';
-    private getByLhererUrl = 'api/getKlasseFachByLehrer';
+    private resourceUrl = 'api/create-zeugnis';
+
     constructor(private http: Http) { }
 
-    create(klasseFach: KlasseFachMySuffix): Observable<KlasseFachMySuffix> {
-        const copy = this.convert(klasseFach);
+    create(createZeugnis: CreateZeugnis): Observable<CreateZeugnis> {
+        const copy = this.convert(createZeugnis);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
     }
 
-    update(klasseFach: KlasseFachMySuffix): Observable<KlasseFachMySuffix> {
-        const copy = this.convert(klasseFach);
+    update(createZeugnis: CreateZeugnis): Observable<CreateZeugnis> {
+        const copy = this.convert(createZeugnis);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
     }
 
-    find(id: number): Observable<KlasseFachMySuffix> {
+    find(id: number): Observable<CreateZeugnis> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             return res.json();
         });
-    }
-
-    getByLehrer(id: number): Observable<ResponseWrapper> {
-        return this.http.get(`${this.getByLhererUrl}/${id}`).map((res: Response) => this.convertResponse(res));
     }
 
     query(req?: any): Observable<ResponseWrapper> {
@@ -51,8 +47,8 @@ export class KlasseFachMySuffixService {
         return new ResponseWrapper(res.headers, jsonResponse);
     }
 
-    private convert(klasseFach: KlasseFachMySuffix): KlasseFachMySuffix {
-        const copy: KlasseFachMySuffix = Object.assign({}, klasseFach);
+    private convert(createZeugnis: CreateZeugnis): CreateZeugnis {
+        const copy: CreateZeugnis = Object.assign({}, createZeugnis);
         return copy;
     }
 }

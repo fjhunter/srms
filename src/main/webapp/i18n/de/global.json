@@ -17,6 +17,7 @@
                 "anschriftMySuffix": "Anschrift",
                 "zeugnisFachMySuffix": "Zeugnis Fach",
                 "klasseFachMySuffix": "Klasse Fach",
+                "createZeugnis": "Create Zeugnis",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

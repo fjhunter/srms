@@ -1,0 +1,16 @@
+<div>
+    <select [(ngModel)]="selectedLehrer" (ngModelChange)="loadFacher()">
+        <option *ngFor="let l of lehrer" [ngValue]="l">{{l.vorname + ' ' + l.namen}}</option>
+    </select>
+    <table>
+        <tr>
+            <th>Klasse</th>
+            <th>Fach</th>
+        </tr>
+        <tr *ngFor="let f of facher">
+            <td>{{getKlassName(f.klasseId).name}}</td>
+            <td>{{getFachName(f.fachId).name}}</td>
+        </tr>
+    </table>
+
+</div>

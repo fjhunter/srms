@@ -33,6 +33,9 @@ export class SchuelerMySuffixService {
     }
 
     query(req?: any): Observable<ResponseWrapper> {
+        this.http.get("/api/schuelerFromLehrerId/1101")
+            .map((res: Response) => this.convertResponse(res))
+            .forEach(obj => console.log(obj));
         const options = createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
             .map((res: Response) => this.convertResponse(res));

@@ -1,0 +1,10 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20170602223231",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "create_zeugnis",
+    "pagination": "infinite-scroll"
+}

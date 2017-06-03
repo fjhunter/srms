@@ -1,0 +1,20 @@
+{
+    "srmsApp": {
+        "createZeugnis" : {
+            "home": {
+                "title": "Create Zeugnis",
+                "createLabel": "Create Zeugnis erstellen",
+                "createOrEditLabel": "Create Zeugnis erstellen oder bearbeiten"
+            },
+            "created": "Create Zeugnis erstellt mit ID {{ param }}",
+            "updated": "Create Zeugnis aktualisiert mit ID {{ param }}",
+            "deleted": "Create Zeugnis gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Create Zeugnis {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Create Zeugnis"
+            }
+        }
+    }
+}

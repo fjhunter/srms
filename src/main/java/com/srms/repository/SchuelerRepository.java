@@ -16,5 +16,5 @@ import java.util.List;
 public interface SchuelerRepository extends JpaRepository<Schueler,Long> {
 
     List<Schueler> findByKlasse_KlasseFachesLehrerId(Long lehrerId);
-
+    List<Schueler> findByKlasse_Id(Long klasseId);
 }

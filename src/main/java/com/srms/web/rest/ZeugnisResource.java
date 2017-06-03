@@ -1,6 +1,8 @@
 package com.srms.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.srms.domain.Zeugnis;
+import com.srms.repository.ZeugnisRepository;
 import com.srms.service.ZeugnisService;
 import com.srms.web.rest.util.HeaderUtil;
 import com.srms.web.rest.util.PaginationUtil;
@@ -33,11 +35,14 @@ public class ZeugnisResource {
     private final Logger log = LoggerFactory.getLogger(ZeugnisResource.class);
 
     private static final String ENTITY_NAME = "zeugnis";
-        
+
     private final ZeugnisService zeugnisService;
 
-    public ZeugnisResource(ZeugnisService zeugnisService) {
+    private final ZeugnisRepository zeugnisRepository;
+
+    public ZeugnisResource(ZeugnisService zeugnisService, ZeugnisRepository zeugnisRepository) {
         this.zeugnisService = zeugnisService;
+        this.zeugnisRepository = zeugnisRepository;
     }
 
     /**
@@ -123,6 +128,11 @@ public class ZeugnisResource {
         log.debug("REST request to delete Zeugnis : {}", id);
         zeugnisService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @RequestMapping("/getBySchueler/{id}")
+    public Zeugnis getBySchuelerId(@PathVariable Long id) {
+        return zeugnisRepository.findBySchuelerId(id);
     }
 
 }

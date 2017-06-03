@@ -126,4 +126,10 @@ public class SchuelerResource {
         List<Schueler> schueler = schuelerRepository.findByKlasse_KlasseFachesLehrerId(id);
         return schueler;
     }
+
+    @RequestMapping("schuelerByKlass/{id}")
+    public List<Schueler> getSchuelerByKLass(@PathVariable Long id) {
+        List<Schueler> tmp = schuelerRepository.findByKlasse_Id(id);
+        return tmp;
+    }
 }

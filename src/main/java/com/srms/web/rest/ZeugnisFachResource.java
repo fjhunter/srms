@@ -26,7 +26,7 @@ public class ZeugnisFachResource {
     private final Logger log = LoggerFactory.getLogger(ZeugnisFachResource.class);
 
     private static final String ENTITY_NAME = "zeugnisFach";
-        
+
     private final ZeugnisFachService zeugnisFachService;
 
     public ZeugnisFachResource(ZeugnisFachService zeugnisFachService) {
@@ -114,5 +114,11 @@ public class ZeugnisFachResource {
         zeugnisFachService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
-
+    @RequestMapping("/updateNote")
+    public ResponseEntity<ZeugnisFachDTO> updateZeugnisFachNote(@RequestBody ZeugnisFachDTO zeugnisFachDTO) throws URISyntaxException {
+        ZeugnisFachDTO result = zeugnisFachService.save(zeugnisFachDTO);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, zeugnisFachDTO.getId().toString()))
+            .body(result);
+    }
 }

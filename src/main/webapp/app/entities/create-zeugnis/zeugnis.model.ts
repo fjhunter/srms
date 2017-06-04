@@ -9,7 +9,7 @@ export class Zeugnis {
     private _schueler: SchuelerMySuffix;
     private _fach: FachMySuffix;
     private _klasse: KlasseMySuffix;
-    private _noten: ZeugnisFachMySuffix;
+    private _note: ZeugnisFachMySuffix;
     private _zeugnis: ZeugnisMySuffix;
     private _zeugnisFach: ZeugnisFachMySuffix;
 
@@ -42,12 +42,12 @@ export class Zeugnis {
         this._klasse = value;
     }
 
-    get noten(): ZeugnisFachMySuffix {
-        return this._noten;
+    get note(): ZeugnisFachMySuffix {
+        return this._note;
     }
 
     set noten(value: ZeugnisFachMySuffix) {
-        this._noten = value;
+        this._note = value;
     }
 
     get zeugnisId(): ZeugnisMySuffix {

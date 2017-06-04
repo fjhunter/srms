@@ -25,6 +25,12 @@ export class ZeugnisFachMySuffixService {
             return res.json();
         });
     }
+    updateNote(zeugnisFach: ZeugnisFachMySuffix): Observable<ZeugnisFachMySuffix> {
+        return this.http.put('api/updateNote', zeugnisFach).map((res: Response) => {
+            return res.json();
+        });
+    }
+
 
     find(id: number): Observable<ZeugnisFachMySuffix> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {

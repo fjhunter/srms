@@ -15,18 +15,16 @@
 
     <table class="table table-striped">
         <tr>
-            <th>Schüler Vorname</th>
-            <th>Schüler Nachname</th>
+            <th>Schüler </th>
             <th>Klasse</th>
             <th>Fach</th>
             <th>Note</th>
         </tr>
         <tr *ngFor="let zeugnis of zeugnise">
-            <td>{{zeugnis.schueler.vorname}}</td>
-            <td>{{zeugnis.schueler.name}}</td>
+            <td>{{zeugnis.schueler.vorname+ ' ' + zeugnis.schueler.name}}</td>
             <td>{{zeugnis.klasse.name}}</td>
             <td>{{zeugnis.fach.name}}</td>
-            <!--<td><input type="number" min="1" max="6" ngModel="zeugnis.note"></td>-->
+            <td><input  [(ngModel)]="zeugnis.note.note" (change)="updateZeugnisNote(zeugnis)"></input></td>
         </tr>
     </table>
 

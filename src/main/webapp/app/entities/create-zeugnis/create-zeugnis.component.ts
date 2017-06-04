@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
@@ -27,6 +27,8 @@ import {ZeugnisMySuffixService} from "../zeugnis/zeugnis-my-suffix.service";
 import {ZeugnisSend} from "../zeugnis/zeugnis-send.model";
 import {Zeugnis_typ} from "../zeugnis/zeugnis-typ.model";
 import {FachKlasseName} from "./fach-klasse-name.model";
+import {ZeugnisFachMySuffix} from "../zeugnis-fach/zeugnis-fach-my-suffix.model";
+import {ZeugnisFachMySuffixService} from "../zeugnis-fach/zeugnis-fach-my-suffix.service";
 
 
 @Component({
@@ -52,6 +54,7 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
     zeugnise: Zeugnis[] = [];
 
     constructor(private fachService: FachMySuffixService,
+                private zeugnisFachMySuffixService: ZeugnisFachMySuffixService,
                 private klassService: KlasseMySuffixService,
                 private klasseFachService: KlasseFachMySuffixService,
                 private createZeugnisService: CreateZeugnisService,
@@ -86,7 +89,10 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
 
     loadFacher() {
         this.zeugnise = [];
-        this.zeugnisService.getBySchueler(new ZeugnisSend(this.selectedLehrer.id, this.selectedDate, this.selectedZeugnisTyp)).toPromise().then(res => console.log(res.json));
+        this.zeugnisService.getBySchueler(new ZeugnisSend(this.selectedLehrer.id, this.selectedDate, this.selectedZeugnisTyp)).toPromise().then(res => {
+            this.zeugnise = res.json;
+            console.log(this.zeugnise);
+        });
     }
 
     reset() {
@@ -157,7 +163,14 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
     private onError(error) {
         this.alertService.error(error.message, null, null);
     }
-
+    updateZeugnisNote(zeugnis: Zeugnis) {
+        let zeugnisFach: ZeugnisFachMySuffix = new ZeugnisFachMySuffix();
+        zeugnisFach.zeugnisId = zeugnis.zeugnis.id;
+        zeugnisFach.id = zeugnis.note.id;
+        zeugnisFach.fachId = zeugnis.fach.id;
+        zeugnisFach.note=zeugnis.note.note;
+        this.zeugnisFachMySuffixService.updateNote(zeugnisFach).toPromise().then(res => console.log(res));
+    }
 }
 
 

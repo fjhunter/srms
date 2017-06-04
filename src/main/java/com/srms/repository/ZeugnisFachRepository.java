@@ -12,5 +12,5 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface ZeugnisFachRepository extends JpaRepository<ZeugnisFach,Long> {
-
+    ZeugnisFach findByZeugnisIdAndFachId(Long zeugnisId, Long fachId);
 }

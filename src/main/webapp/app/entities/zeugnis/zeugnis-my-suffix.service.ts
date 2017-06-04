@@ -41,19 +41,16 @@ export class ZeugnisMySuffixService {
         });
     }
 
-    getBySchueler(zeugnisSend: ZeugnisSend): Observable<ZeugnisMySuffix> {
-        console.log(zeugnisSend);
+    getBySchueler(zeugnisSend: ZeugnisSend): Observable<ResponseWrapper> {
         let schuelerDatumZeugnisTyp = {
-            schuelerId: zeugnisSend.schuelerId,
+            lehrerId: zeugnisSend.lehrerId,
             datum: zeugnisSend.datum,
             zeugnisTyp: zeugnisSend.zeugnisTyp
         };
 
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('api/getZeugnisByDateTypeSchueler', schuelerDatumZeugnisTyp, { headers: headers }).map((res: Response) => {
-            return this.convertResponse(res);
-        })
+        return this.http.post('api/getZeugnisByDateTypeSchueler', schuelerDatumZeugnisTyp, { headers: headers }).map((res: Response) => this.convertResponse(res));;
     }
 
     query(req?: any): Observable<ResponseWrapper> {

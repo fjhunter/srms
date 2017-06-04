@@ -6,25 +6,19 @@ import com.srms.domain.enumeration.Zeugnis_typ;
  * Created by fj on 03.06.17.
  */
 public class SchuelerDatumZeugnisTyp {
-    private Long schuelerId;
+    private Long lehrerId;
     private String datum;
     private Zeugnis_typ zeugnisTyp;
 
     public SchuelerDatumZeugnisTyp() {
     }
 
-    public SchuelerDatumZeugnisTyp(Long schuelerId, String datum, Zeugnis_typ zeugnisTyp) {
-        this.schuelerId = schuelerId;
-        this.datum = datum;
-        this.zeugnisTyp = zeugnisTyp;
+    public Long getLehrerId() {
+        return lehrerId;
     }
 
-    public Long getSchuelerId() {
-        return schuelerId;
-    }
-
-    public void setSchuelerId(Long schuelerId) {
-        this.schuelerId = schuelerId;
+    public void setLehrerId(Long lehrerId) {
+        this.lehrerId = lehrerId;
     }
 
     public String getDatum() {

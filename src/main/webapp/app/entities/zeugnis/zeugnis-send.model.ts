@@ -1,23 +1,22 @@
 import {Zeugnis_typ} from "./zeugnis-typ.model";
 export class ZeugnisSend {
-    private _schuelerId: number;
+    private _lehrerId: number;
     private _datum: any;
     private _zeugnisTyp: Zeugnis_typ;
 
 
-    constructor(schuelerId: number, datum: any, zeugnisTyp: Zeugnis_typ) {
-        this._schuelerId = schuelerId;
+    constructor(lehrerId: number, datum: any, zeugnisTyp: Zeugnis_typ) {
+        this._lehrerId = lehrerId;
         this._datum = datum;
         this._zeugnisTyp = zeugnisTyp;
     }
 
-
-    get schuelerId(): number {
-        return this._schuelerId;
+    get lehrerId(): number {
+        return this._lehrerId;
     }
 
-    set schuelerId(value: number) {
-        this._schuelerId = value;
+    set lehrerId(value: number) {
+        this._lehrerId = value;
     }
 
     get datum(): any {

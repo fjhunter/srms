@@ -6,6 +6,8 @@ import com.srms.domain.Zeugnis;
 import com.srms.repository.ZeugnisRepository;
 import com.srms.service.ZeugnisService;
 import com.srms.service.dto.ZeugnisDTO;
+import com.srms.service.impl.RealZeugnisService;
+import com.srms.service.impl.ZeugnisServiceImpl;
 import com.srms.service.mapper.ZeugnisMapper;
 import com.srms.web.rest.errors.ExceptionTranslator;
 
@@ -77,6 +79,9 @@ public class ZeugnisResourceIntTest {
     private ExceptionTranslator exceptionTranslator;
 
     @Autowired
+    private RealZeugnisService realZeugnisService;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restZeugnisMockMvc;
@@ -86,7 +91,7 @@ public class ZeugnisResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        ZeugnisResource zeugnisResource = new ZeugnisResource(zeugnisService, zeugnisRepository);
+        ZeugnisResource zeugnisResource = new ZeugnisResource(zeugnisService, zeugnisRepository, realZeugnisService);
         this.restZeugnisMockMvc = MockMvcBuilders.standaloneSetup(zeugnisResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

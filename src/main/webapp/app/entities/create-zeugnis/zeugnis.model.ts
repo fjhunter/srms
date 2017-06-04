@@ -12,7 +12,6 @@ export class Zeugnis {
     private _noten: ZeugnisFachMySuffix;
     private _zeugnis: ZeugnisMySuffix;
     private _zeugnisFach: ZeugnisFachMySuffix;
-    private _KlasseService: KlasseMySuffixService;
 
 
     constructor() {
@@ -59,13 +58,6 @@ export class Zeugnis {
         this._zeugnis = value;
     }
 
-    get KlasseService(): KlasseMySuffixService {
-        return this._KlasseService;
-    }
-
-    set KlasseService(value: KlasseMySuffixService) {
-        this._KlasseService = value;
-    }
 
     get zeugnis(): ZeugnisMySuffix {
         return this._zeugnis;

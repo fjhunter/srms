@@ -1,18 +1,16 @@
 package com.srms.service.impl;
 
-import com.srms.service.ZeugnisService;
 import com.srms.domain.Zeugnis;
 import com.srms.repository.ZeugnisRepository;
+import com.srms.service.ZeugnisService;
 import com.srms.service.dto.ZeugnisDTO;
 import com.srms.service.mapper.ZeugnisMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service Implementation for managing Zeugnis.
@@ -22,7 +20,7 @@ import java.util.List;
 public class ZeugnisServiceImpl implements ZeugnisService{
 
     private final Logger log = LoggerFactory.getLogger(ZeugnisServiceImpl.class);
-    
+
     private final ZeugnisRepository zeugnisRepository;
 
     private final ZeugnisMapper zeugnisMapper;
@@ -49,7 +47,7 @@ public class ZeugnisServiceImpl implements ZeugnisService{
 
     /**
      *  Get all the zeugnis.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */

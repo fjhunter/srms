@@ -29,6 +29,7 @@ import {Zeugnis_typ} from "../zeugnis/zeugnis-typ.model";
 import {FachKlasseName} from "./fach-klasse-name.model";
 import {ZeugnisFachMySuffix} from "../zeugnis-fach/zeugnis-fach-my-suffix.model";
 import {ZeugnisFachMySuffixService} from "../zeugnis-fach/zeugnis-fach-my-suffix.service";
+import {Kopfnoten} from "../kopfnoten/kopfnoten.model";
 
 
 @Component({
@@ -51,6 +52,7 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
     selectedZeugnisTyp: Zeugnis_typ;
     totalItems: number;
     selectedDate: any;
+
     zeugnise: Zeugnis[] = [];
 
     constructor(private fachService: FachMySuffixService,

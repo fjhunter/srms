@@ -12,6 +12,7 @@ import { SrmsZeugnisFachMySuffixModule } from './zeugnis-fach/zeugnis-fach-my-su
 import { SrmsKlasseFachMySuffixModule } from './klasse-fach/klasse-fach-my-suffix.module';
 import { SrmsCreateZeugnisModule } from './create-zeugnis/create-zeugnis.module';
 import { SrmsPrintZeugnisModule } from './print-zeugnis/print-zeugnis.module';
+import { SrmsKopfnotenModule } from './kopfnoten/kopfnoten.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SrmsPrintZeugnisModule } from './print-zeugnis/print-zeugnis.module';
         SrmsKlasseFachMySuffixModule,
         SrmsCreateZeugnisModule,
         SrmsPrintZeugnisModule,
+        SrmsKopfnotenModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

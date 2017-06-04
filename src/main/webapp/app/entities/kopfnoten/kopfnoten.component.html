@@ -1,0 +1,19 @@
+<div>
+    <select [(ngModel)]="selectedLehrer"  required name="lehrer" (change)="loadKopfNoten()" >
+        <option *ngFor="let l of lehrer" [ngValue]="l">{{l.vorname + ' ' + l.namen}}</option>
+    </select>
+    <table class="table table-striped">
+        <tr>
+            <th>Schüler </th>
+            <th>Klasse</th>
+            <th>SozialVerhalten</th>
+            <th>Arbeitsverhalten</th>
+        </tr>
+        <tr *ngFor="let kopfNote of kopfNoten">
+            <td>{{kopfNote.schueler.vorname+ ' ' + kopfNote.schueler.name}}</td>
+            <td>{{kopfNote.klasse.name}}</td>
+            <td><input  [(ngModel)]="kopfNote.zeugnis.sozialverhalten" (change)="updateZeugnisNote(kopfNote)"></input></td>
+            <td><input  [(ngModel)]="kopfNote.zeugnis.arbeitsverhalten" (change)="updateZeugnisNote(kopfNote)"></input></td>
+        </tr>
+    </table>
+</div>

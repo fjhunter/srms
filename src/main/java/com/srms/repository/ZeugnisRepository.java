@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 
 /**
@@ -14,6 +15,6 @@ import java.time.ZonedDateTime;
 @SuppressWarnings("unused")
 @Repository
 public interface ZeugnisRepository extends JpaRepository<Zeugnis,Long> {
-    Zeugnis findBySchuelerId(Long id);
+    List<Zeugnis> findBySchuelerId(Long id);
     Zeugnis findBySchuelerIdAndAndDatumAndAndZeugnistyp(Long schuelerId, ZonedDateTime datum, Zeugnis_typ zeugnisTyp);
 }

@@ -1,6 +1,10 @@
 package com.srms.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.srms.domain.enumeration.Schulform;
+import com.srms.domain.enumeration.Zeugnis_typ;
+import com.srms.repository.KlasseRepository;
+import com.srms.repository.SchuelerRepository;
 import com.srms.repository.ZeugnisRepository;
 import com.srms.service.ZeugnisService;
 import com.srms.service.dto.ZeugnisDTO;
@@ -25,6 +29,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -46,11 +51,16 @@ public class ZeugnisResource {
 
     private final ZeugnisRepository zeugnisRepository;
 
+    private final KlasseRepository klasseRepository;
 
-    public ZeugnisResource(ZeugnisService zeugnisService, ZeugnisRepository zeugnisRepository, RealZeugnisService realZeugnisService) {
+    private final SchuelerRepository schuelerRepository;
+
+    public ZeugnisResource(ZeugnisService zeugnisService, ZeugnisRepository zeugnisRepository, RealZeugnisService realZeugnisService, KlasseRepository klasseRepository, SchuelerRepository schuelerRepository) {
         this.zeugnisService = zeugnisService;
         this.zeugnisRepository = zeugnisRepository;
         this.realZeugnisService = realZeugnisService;
+        this.klasseRepository = klasseRepository;
+        this.schuelerRepository = schuelerRepository;
     }
 
     /**
@@ -148,4 +158,16 @@ public class ZeugnisResource {
         return realZeugnisService.getRealZeugnise(schuelerDatumZeugnisTyp.getZeugnisTyp(), schuelerDatumZeugnisTyp.getLehrerId(), zonedDate);
     }
 
+    @RequestMapping(value = "/getKopfnoten/{id}")
+    public List<KopfNoten> getKopfnoten(@PathVariable Long id) {
+        List<KopfNoten> kopfNotenList = new ArrayList<>();
+        klasseRepository.findByLehrerId(id).stream().forEach(klasse -> {
+            schuelerRepository.findByKlasse_Id(klasse.getId()).stream().filter(schueler -> schueler.getSchulform() == Schulform.GYMNASIUM || schueler.getSchulform() == Schulform.REALSCHULE || schueler.getSchulform() == Schulform.HAUPTSCHULE).forEach(schueler -> {
+                zeugnisRepository.findBySchuelerId(schueler.getId()).stream().filter(zeugnis -> zeugnis.getZeugnistyp() != Zeugnis_typ.ABSCHLUSSZEUGNISS).forEach(zeugnis -> {
+                    kopfNotenList.add(new KopfNoten(klasse, schueler, zeugnis));
+                });
+            });
+        });
+        return kopfNotenList;
+    }
 }

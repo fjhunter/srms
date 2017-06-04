@@ -3,6 +3,8 @@ package com.srms.web.rest;
 import com.srms.SrmsApp;
 
 import com.srms.domain.Zeugnis;
+import com.srms.repository.KlasseRepository;
+import com.srms.repository.SchuelerRepository;
 import com.srms.repository.ZeugnisRepository;
 import com.srms.service.ZeugnisService;
 import com.srms.service.dto.ZeugnisDTO;
@@ -26,6 +28,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.awt.event.KeyListener;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.ZoneOffset;
@@ -88,10 +91,15 @@ public class ZeugnisResourceIntTest {
 
     private Zeugnis zeugnis;
 
+    @Autowired
+    private KlasseRepository klasseRepository;
+
+    @Autowired
+    private SchuelerRepository schuelerRepository;
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        ZeugnisResource zeugnisResource = new ZeugnisResource(zeugnisService, zeugnisRepository, realZeugnisService);
+        ZeugnisResource zeugnisResource = new ZeugnisResource(zeugnisService, zeugnisRepository, realZeugnisService, klasseRepository, schuelerRepository);
         this.restZeugnisMockMvc = MockMvcBuilders.standaloneSetup(zeugnisResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

@@ -1,0 +1,20 @@
+{
+    "srmsApp": {
+        "kopfnoten" : {
+            "home": {
+                "title": "Kopfnotens",
+                "createLabel": "Kopfnoten erstellen",
+                "createOrEditLabel": "Kopfnoten erstellen oder bearbeiten"
+            },
+            "created": "Kopfnoten erstellt mit ID {{ param }}",
+            "updated": "Kopfnoten aktualisiert mit ID {{ param }}",
+            "deleted": "Kopfnoten gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Kopfnoten {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Kopfnoten"
+            }
+        }
+    }
+}

@@ -166,12 +166,22 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
         this.alertService.error(error.message, null, null);
     }
     updateZeugnisNote(zeugnis: Zeugnis) {
-        let zeugnisFach: ZeugnisFachMySuffix = new ZeugnisFachMySuffix();
-        zeugnisFach.zeugnisId = zeugnis.zeugnis.id;
-        zeugnisFach.id = zeugnis.note.id;
-        zeugnisFach.fachId = zeugnis.fach.id;
-        zeugnisFach.note=zeugnis.note.note;
-        this.zeugnisFachMySuffixService.updateNote(zeugnisFach).toPromise().then(res => console.log(res));
+        if(this.validateNote(zeugnis.note.note)){
+            let zeugnisFach: ZeugnisFachMySuffix = new ZeugnisFachMySuffix();
+            zeugnisFach.zeugnisId = zeugnis.zeugnis.id;
+            zeugnisFach.id = zeugnis.note.id;
+            zeugnisFach.fachId = zeugnis.fach.id;
+            zeugnisFach.note=zeugnis.note.note;
+            this.zeugnisFachMySuffixService.updateNote(zeugnisFach).toPromise().then(res => console.log(res));
+        }
+
+    }
+    private validateNote(note: number): boolean {
+        if (note <= 0 || note > 6) {
+            alert("Bitte gebe Noten von 1 bis 6 ein!");
+            return false
+        }
+        return true
     }
 }
 

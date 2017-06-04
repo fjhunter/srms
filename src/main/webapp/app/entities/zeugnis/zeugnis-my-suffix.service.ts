@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { DateUtils } from 'ng-jhipster';
+import {Injectable} from '@angular/core';
+import {Http, Response, Headers} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {DateUtils} from 'ng-jhipster';
 
-import { ZeugnisMySuffix } from './zeugnis-my-suffix.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import {ZeugnisMySuffix} from './zeugnis-my-suffix.model';
+import {ResponseWrapper, createRequestOption} from '../../shared';
+import {ZeugnisSend} from "./zeugnis-send.model";
 
 @Injectable()
 export class ZeugnisMySuffixService {
 
     private resourceUrl = 'api/zeugnis';
 
-    constructor(private http: Http, private dateUtils: DateUtils) { }
+    constructor(private http: Http, private dateUtils: DateUtils) {
+    }
 
     create(zeugnis: ZeugnisMySuffix): Observable<ZeugnisMySuffix> {
         const copy = this.convert(zeugnis);
@@ -38,13 +40,22 @@ export class ZeugnisMySuffixService {
             return jsonResponse;
         });
     }
-    getBySchueler(id: number): Observable<ZeugnisMySuffix> {
-        return this.http.get('api/getBySchueler/'+id).map((res: Response) => {
-            const jsonResponse = res.json();
-            this.convertItemFromServer(jsonResponse);
-            return jsonResponse;
+
+    getBySchueler(zeugnisSend: ZeugnisSend): Observable<ZeugnisMySuffix> {
+        console.log(zeugnisSend);
+        let schuelerDatumZeugnisTyp = {
+            schuelerId: zeugnisSend.schuelerId,
+            datum: zeugnisSend.datum,
+            zeugnisTyp: zeugnisSend.zeugnisTyp
+        };
+
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('api/getZeugnisByDateTypeSchueler', schuelerDatumZeugnisTyp, { headers: headers }).map((res: Response) => {
+            return this.convertResponse(res);
         })
     }
+
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
         return this.http.get(this.resourceUrl, options)

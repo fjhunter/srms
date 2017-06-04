@@ -4,11 +4,11 @@ import com.codahale.metrics.annotation.Timed;
 import com.srms.domain.Zeugnis;
 import com.srms.repository.ZeugnisRepository;
 import com.srms.service.ZeugnisService;
+import com.srms.service.dto.ZeugnisDTO;
 import com.srms.web.rest.util.HeaderUtil;
 import com.srms.web.rest.util.PaginationUtil;
-import com.srms.service.dto.ZeugnisDTO;
-import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -21,7 +21,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -130,9 +134,23 @@ public class ZeugnisResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
-    @RequestMapping("/getBySchueler/{id}")
-    public Zeugnis getBySchuelerId(@PathVariable Long id) {
-        return zeugnisRepository.findBySchuelerId(id);
+    @RequestMapping(value = "/getZeugnisByDateTypeSchueler", method = RequestMethod.POST)
+    @ResponseBody
+    public Zeugnis getBySchuelerId(@RequestBody SchuelerDatumZeugnisTyp schuelerDatumZeugnisTyp) throws ParseException {
+        schuelerDatumZeugnisTyp.setDatum(schuelerDatumZeugnisTyp.getDatum().replace("T", ""));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DDhh:mm");
+        Date date = simpleDateFormat.parse(schuelerDatumZeugnisTyp.getDatum());
+        ZonedDateTime zonedDate = ZonedDateTime.ofInstant(date.toInstant(), ZoneId.of("Europe/Berlin"));
+        Zeugnis zeugnis = zeugnisRepository.findBySchuelerIdAndAndDatumAndAndZeugnistyp(schuelerDatumZeugnisTyp.getSchuelerId(), zonedDate, schuelerDatumZeugnisTyp.getZeugnisTyp());
+        if (zeugnis == null) {
+            ZeugnisDTO zeugnisDTO = new ZeugnisDTO();
+            zeugnisDTO.setSchuelerId(schuelerDatumZeugnisTyp.getSchuelerId());
+            zeugnisDTO.setDatum(zonedDate);
+            zeugnisDTO.setZeugnistyp(schuelerDatumZeugnisTyp.getZeugnisTyp());
+            zeugnisService.save(zeugnisDTO);
+            zeugnis = zeugnisRepository.findBySchuelerIdAndAndDatumAndAndZeugnistyp(schuelerDatumZeugnisTyp.getSchuelerId(), zonedDate, schuelerDatumZeugnisTyp.getZeugnisTyp());
+        }
+        return zeugnis;
     }
 
 }

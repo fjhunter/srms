@@ -44,9 +44,9 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="srmsApp.zeugnis.zeugnistyp" for="field_zeugnistyp">Zeugnistyp</label>
             <select class="form-control" name="zeugnistyp" [(ngModel)]="zeugnis.zeugnistyp" id="field_zeugnistyp"  required>
-                <option value="HALBJAHRESZEUGNIS" jhiTranslate="srmsApp.Zeugnis_typ.HALBJAHRESZEUGNIS">HALBJAHRESZEUGNIS</option>
-                <option value="ZEUGNIS" jhiTranslate="srmsApp.Zeugnis_typ.ZEUGNIS">ZEUGNIS</option>
-                <option value="ABSCHLUSSZEUGNISS" jhiTranslate="srmsApp.Zeugnis_typ.ABSCHLUSSZEUGNISS">ABSCHLUSSZEUGNISS</option>
+                <option value="HALBJAHRESZEUGNIS" >HALBJAHRESZEUGNIS</option>
+                <option value="ZEUGNIS" >ZEUGNIS</option>
+                <option value="ABSCHLUSSZEUGNISS" >ABSCHLUSSZEUGNISS</option>
             </select>
             <div [hidden]="!(editForm.controls.zeugnistyp?.dirty && editForm.controls.zeugnistyp?.invalid)">
                 <small class="form-text text-danger"

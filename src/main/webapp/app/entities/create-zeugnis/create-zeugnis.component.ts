@@ -23,6 +23,9 @@ import {Zeugnis} from "./zeugnis.model";
 import {SchuelerMySuffix} from "../schueler/schueler-my-suffix.model";
 import {ZeugnisMySuffix} from "../zeugnis/zeugnis-my-suffix.model";
 import {ZeugnisMySuffixService} from "../zeugnis/zeugnis-my-suffix.service";
+import {ZeugnisSend} from "../zeugnis/zeugnis-send.model";
+import {Zeugnis_typ} from "../zeugnis/zeugnis-typ.model";
+
 
 @Component({
     selector: 'jhi-create-zeugnis',
@@ -41,8 +44,9 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
     reverse: any;
     lehrer: LehrerMySuffix[];
     selectedLehrer: LehrerMySuffix;
+    selectedZeugnisTyp: Zeugnis_typ;
     totalItems: number;
-    facher: KlasseFachDto[] = [];
+    selectedDate: any;
     zeugnise: Zeugnis[] = [];
 
     constructor(private fachService: FachMySuffixService,
@@ -83,21 +87,21 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
         this.klasseFachZeugnis.getByLehrer(this.selectedLehrer.id).subscribe((res: ResponseWrapper) => {
             let faches: KlasseFachMySuffix[] = res.json;
             faches.forEach(fach => {
-                let tmpFach: FachMySuffix = fach;
                 this.schuelerService.getByKlasse(fach.klasseId).subscribe((res: ResponseWrapper) => {
                     res.json.forEach(schueler => {
                         let zeugnis: Zeugnis = new Zeugnis();
                         zeugnis.klasse = schueler.klasse;
                         zeugnis.schueler = schueler;
-                        this.fachService.find(fach.fachId).subscribe((res) => {
-                            zeugnis.fach = res;
-                            this.zeugnisService.getBySchueler(zeugnis.schueler.id).subscribe((res) => {
-                                zeugnis.zeugnis = res;
+                        this.zeugnisService.getBySchueler(new ZeugnisSend(zeugnis.schueler.id,this.selectedDate,this.selectedZeugnisTyp)).subscribe((res) => {
+                            zeugnis.zeugnis = res;
+                            this.fachService.find(fach.fachId).subscribe((res) => {
+                                zeugnis.fach = res;
                                 console.log(zeugnis);
                                 this.zeugnise.push(zeugnis);
                             });
 
                         });
+
                     });
 
                 })

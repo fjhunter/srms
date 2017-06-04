@@ -24,7 +24,7 @@
             <td>{{zeugnis.schueler.vorname+ ' ' + zeugnis.schueler.name}}</td>
             <td>{{zeugnis.klasse.name}}</td>
             <td>{{zeugnis.fach.name}}</td>
-            <td><input  [(ngModel)]="zeugnis.note.note" (change)="updateZeugnisNote(zeugnis)"></td>
+            <td><input type="number"  [(ngModel)]="zeugnis.note.note" (change)="updateZeugnisNote(zeugnis)"></td>
         </tr>
     </table>
 

@@ -16,7 +16,7 @@ export const createZeugnisRoute: Routes = [
         path: 'create-zeugnis',
         component: CreateZeugnisComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_LEHRER'],
             pageTitle: 'srmsApp.createZeugnis.home.title'
         },
         canActivate: [UserRouteAccessService]

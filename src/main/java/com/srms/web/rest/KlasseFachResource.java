@@ -5,7 +5,6 @@ import com.srms.repository.KlasseFachRepository;
 import com.srms.service.KlasseFachService;
 import com.srms.service.dto.KlasseFachDTO;
 import com.srms.service.mapper.KlasseFachMapper;
-import com.srms.service.mapper.KlasseFachMapperImpl;
 import com.srms.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -37,7 +36,6 @@ public class KlasseFachResource {
     public KlasseFachResource(KlasseFachService klasseFachService, KlasseFachRepository klasseFachRepository) {
         this.klasseFachService = klasseFachService;
         this.klasseFachRepository = klasseFachRepository;
-        klasseFachMapper = new KlasseFachMapperImpl();
     }
 
     /**

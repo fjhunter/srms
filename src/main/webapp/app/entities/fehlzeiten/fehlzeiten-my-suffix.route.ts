@@ -16,7 +16,7 @@ export const fehlzeitenRoute: Routes = [
         path: 'fehlzeiten-my-suffix',
         component: FehlzeitenMySuffixComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.fehlzeiten.home.title'
         },
         canActivate: [UserRouteAccessService]

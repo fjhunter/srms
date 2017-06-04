@@ -474,7 +474,7 @@
                     <url>jdbc:postgresql://localhost:5432/srms</url>
                     <defaultSchemaName></defaultSchemaName>
                     <username>srms</username>
-                    <password></password>
+                    <password>srms</password>
                     <referenceUrl>hibernate:spring:com.srms.domain?dialect=org.hibernate.dialect.PostgreSQL82Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>

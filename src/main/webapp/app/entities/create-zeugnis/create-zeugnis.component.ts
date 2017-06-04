@@ -108,10 +108,13 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
         this.loadAll();
     }
 
-    loadLehrer() {
+    loadLehrer(login: string) {
         this.lehrerService.query().subscribe(
             (res: ResponseWrapper) => {
-                this.lehrer = res.json;
+                res.json.forEach(lehrer => {
+                    if(lehrer.vorname.toLowerCase()+ ' '+ lehrer.namen.toLowerCase() == login.toLowerCase())
+                        this.selectedLehrer=lehrer;
+                })
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
@@ -127,9 +130,13 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.loadAll();
-        this.loadLehrer();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
+            console.log();
+            let login: string = account.login;
+            login = login.replace("-", " ");
+            this.loadLehrer(login.toLowerCase());
+
         });
         this.registerChangeInCreateZeugnis();
     }

@@ -13,7 +13,7 @@ export const kopfnotenRoute: Routes = [
         path: 'kopfnoten',
         component: KopfnotenComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.kopfnoten.home.title'
         },
         canActivate: [UserRouteAccessService]

@@ -1,13 +1,12 @@
 <div>
     <form (submit)="loadFacher()" #formCtrl="ngForm" class="form-control">
-        <select [(ngModel)]="selectedLehrer"  required name="lehrer" >
-            <option *ngFor="let l of lehrer" [ngValue]="l">{{l.vorname + ' ' + l.namen}}</option>
-        </select>
+        <label>ZeugnisTyp</label>
         <select name="zeugnistyp" [(ngModel)]="selectedZeugnisTyp" required name="typ">
             <option value="HALBJAHRESZEUGNIS" >HALBJAHRESZEUGNIS</option>
             <option value="ZEUGNIS" >ZEUGNIS</option>
             <option value="ABSCHLUSSZEUGNISS" >ABSCHLUSSZEUGNISS</option>
         </select>
+        <label>Datum</label>
         <input id="field_datum" type="datetime-local" name="datum" [(ngModel)]="selectedDate"
                required  />
         <button type="submit" [disabled]="!formCtrl.form.valid" class="badge-primary">Lade Fächer</button>

@@ -16,7 +16,7 @@ export const schuelerRoute: Routes = [
         path: 'schueler-my-suffix',
         component: SchuelerMySuffixComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'SEKETERIAT'],
             pageTitle: 'srmsApp.schueler.home.title'
         },
         canActivate: [UserRouteAccessService]

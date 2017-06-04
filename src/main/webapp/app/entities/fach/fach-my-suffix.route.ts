@@ -16,7 +16,7 @@ export const fachRoute: Routes = [
         path: 'fach-my-suffix',
         component: FachMySuffixComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'SEKETERIAT'],
             pageTitle: 'srmsApp.fach.home.title'
         },
         canActivate: [UserRouteAccessService]

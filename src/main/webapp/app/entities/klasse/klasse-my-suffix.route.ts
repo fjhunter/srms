@@ -16,7 +16,7 @@ export const klasseRoute: Routes = [
         path: 'klasse-my-suffix',
         component: KlasseMySuffixComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'SEKETERIAT'],
             pageTitle: 'srmsApp.klasse.home.title'
         },
         canActivate: [UserRouteAccessService]

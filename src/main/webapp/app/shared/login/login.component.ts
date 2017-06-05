@@ -77,7 +77,6 @@ export class JhiLoginModalComponent implements OnInit, AfterViewInit {
                         this.router.navigateByUrl("anschrift-my-suffix")
                     }
                 });
-                console.log(account);
             });
             // const redirect = this.stateStorageService.getUrl();
             // if (redirect) {

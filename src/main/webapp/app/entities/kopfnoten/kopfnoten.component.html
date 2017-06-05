@@ -1,7 +1,4 @@
 <div>
-    <select [(ngModel)]="selectedLehrer"  required name="lehrer" (change)="loadKopfNoten()" >
-        <option *ngFor="let l of lehrer" [ngValue]="l">{{l.vorname + ' ' + l.namen}}</option>
-    </select>
     <table class="table table-striped">
         <tr>
             <th>Schüler </th>

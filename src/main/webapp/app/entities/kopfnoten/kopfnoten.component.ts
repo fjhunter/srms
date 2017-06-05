@@ -20,7 +20,6 @@ export class KopfnotenComponent implements OnInit, OnDestroy {
     currentAccount: any;
     eventSubscriber: Subscription;
     selectedLehrer: LehrerMySuffix;
-    lehrer: LehrerMySuffix[];
     kopfNoten: Kopfnoten[] = [];
 
     constructor(private zeugnisService: ZeugnisMySuffixService,
@@ -32,20 +31,25 @@ export class KopfnotenComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.loadLehrer();
+
         this.principal.identity().then((account) => {
             this.currentAccount = account;
-            console.log(account);
+            this.loadLehrer(account.login.replace("-", " "));
         });
     }
 
     ngOnDestroy() {
     }
 
-    loadLehrer() {
+    loadLehrer(login: string) {
         this.lehrerService.query().subscribe(
             (res: ResponseWrapper) => {
-                this.lehrer = res.json;
+                res.json.forEach(lehrer => {
+                    if (lehrer.vorname.toLowerCase() + ' ' + lehrer.namen.toLowerCase() == login.toLowerCase())
+                        this.selectedLehrer = lehrer;
+
+                        this.loadKopfNoten();
+                })
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
@@ -53,14 +57,13 @@ export class KopfnotenComponent implements OnInit, OnDestroy {
 
     loadKopfNoten() {
         this.kopfnotenService.getKopfNoten(this.selectedLehrer.id).subscribe((res: ResponseWrapper) => {
-            console.log(res.json);
             this.kopfNoten = res.json;
         })
     }
 
     updateZeugnisNote(kopfNote: Kopfnoten) {
         let valid: boolean = true;
-        if(kopfNote.zeugnis.arbeitsverhalten == null && kopfNote.zeugnis.sozialverhalten == null)
+        if (kopfNote.zeugnis.arbeitsverhalten == null && kopfNote.zeugnis.sozialverhalten == null)
             valid = false;
         if (kopfNote.zeugnis.arbeitsverhalten != null) {
             if (!this.validateNote(kopfNote.zeugnis.arbeitsverhalten)) {
@@ -68,11 +71,11 @@ export class KopfnotenComponent implements OnInit, OnDestroy {
             }
         }
         if (kopfNote.zeugnis.sozialverhalten != null) {
-            if (!this.validateNote(kopfNote.zeugnis.sozialverhalten)){
+            if (!this.validateNote(kopfNote.zeugnis.sozialverhalten)) {
                 valid = false;
             }
         }
-        if(valid) {
+        if (valid) {
             let zeugnis: ZeugnisMySuffix = new ZeugnisMySuffix();
             zeugnis.id = kopfNote.zeugnis.id;
             zeugnis.datum = kopfNote.zeugnis.datum;

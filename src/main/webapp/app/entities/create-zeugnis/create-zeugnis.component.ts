@@ -93,7 +93,6 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
         this.zeugnise = [];
         this.zeugnisService.getBySchueler(new ZeugnisSend(this.selectedLehrer.id, this.selectedDate, this.selectedZeugnisTyp)).toPromise().then(res => {
             this.zeugnise = res.json;
-            console.log(this.zeugnise);
         });
     }
 
@@ -132,7 +131,6 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
-            console.log();
             let login: string = account.login;
             login = login.replace("-", " ");
             this.loadLehrer(login.toLowerCase());
@@ -193,24 +191,3 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
 }
 
 
-// this.klasseFachZeugnis.getByLehrer(this.selectedLehrer.id).subscribe(
-//     (res: ResponseWrapper) => {
-//         let facher: KlasseFachMySuffix[] = res.json;
-//         for (let i = 0; i < facher.length; i++) {
-//             let fach: KlasseFachMySuffix = facher[i];
-//             this.facher.push(new KlasseFachDto);
-//             console.log(fach.id);
-//             this.facher[facher.length-1].id = fach.id;
-//             this.getKlassName(fach.klasseId).subscribe((res) => {
-//                 this.facher[facher.length-1].klasse = res.name;
-//                 this.getFachName(fach.fachId).subscribe((res) => {
-//                     this.facher[facher.length-1].fach= res.name;
-//                     console.log(this.facher);
-//                 })
-//
-//             });
-//
-//         }
-//     },
-//     (res: ResponseWrapper) => this.onError(res.json)
-// )

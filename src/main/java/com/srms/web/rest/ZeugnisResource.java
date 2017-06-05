@@ -1,10 +1,13 @@
 package com.srms.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.srms.domain.Zeugnis;
+import com.srms.domain.ZeugnisFach;
 import com.srms.domain.enumeration.Schulform;
 import com.srms.domain.enumeration.Zeugnis_typ;
 import com.srms.repository.KlasseRepository;
 import com.srms.repository.SchuelerRepository;
+import com.srms.repository.ZeugnisFachRepository;
 import com.srms.repository.ZeugnisRepository;
 import com.srms.service.ZeugnisService;
 import com.srms.service.dto.ZeugnisDTO;
@@ -55,7 +58,10 @@ public class ZeugnisResource {
 
     private final SchuelerRepository schuelerRepository;
 
-    public ZeugnisResource(ZeugnisService zeugnisService, ZeugnisRepository zeugnisRepository, RealZeugnisService realZeugnisService, KlasseRepository klasseRepository, SchuelerRepository schuelerRepository) {
+    private final ZeugnisFachRepository zeugnisFachRepository;
+
+    public ZeugnisResource(ZeugnisService zeugnisService, ZeugnisRepository zeugnisRepository, RealZeugnisService realZeugnisService, KlasseRepository klasseRepository, SchuelerRepository schuelerRepository, ZeugnisFachRepository zeugnisFachRepository) {
+        this.zeugnisFachRepository = zeugnisFachRepository;
         this.zeugnisService = zeugnisService;
         this.zeugnisRepository = zeugnisRepository;
         this.realZeugnisService = realZeugnisService;
@@ -169,5 +175,13 @@ public class ZeugnisResource {
             });
         });
         return kopfNotenList;
+    }
+    @RequestMapping("/getCompleteZeugnis/{id}")
+    public CompleteZeugnis getCompleteZeugnis(@PathVariable Long id) {
+        Zeugnis zeugnis = zeugnisRepository.findById(id);
+        List<ZeugnisFach> zeugnisFacher = zeugnisFachRepository.findByZeugnisId(id);
+        CompleteZeugnis completeZeugnis = new CompleteZeugnis(zeugnis);
+        completeZeugnis.setFacher(zeugnisFacher);
+        return completeZeugnis;
     }
 }

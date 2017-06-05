@@ -15,6 +15,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface ZeugnisRepository extends JpaRepository<Zeugnis,Long> {
+    Zeugnis findById(Long id);
     List<Zeugnis> findBySchuelerId(Long id);
     Zeugnis findBySchuelerIdAndAndDatumAndAndZeugnistyp(Long schuelerId, ZonedDateTime datum, Zeugnis_typ zeugnisTyp);
 }

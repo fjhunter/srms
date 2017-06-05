@@ -1,54 +1,27 @@
 <div>
-    <h2>
-        <span jhiTranslate="srmsApp.printZeugnis.home.title">Print Zeugnis</span>
-        <button class="btn btn-primary float-right create-print-zeugnis" [routerLink]="['/', { outlets: { popup: ['print-zeugnis-new'] } }]">
-            <span class="fa fa-plus"></span>
-            <span  jhiTranslate="srmsApp.printZeugnis.home.createLabel">
-            Create new Print Zeugnis
-            </span>
-        </button>
-    </h2>
-    <jhi-alert></jhi-alert>
-    <div class="row">
+    <div style="text-align: center">
+        <h1>FRIEDRICH-DESSAUER-SCHULE</h1>
+        <h3>LIMBURG/LAHN</h3>
+        <h3>Berufliche Schulen - Schwerpunkt: Technik</h3>
+        <h2><b>{{'Zeugnis der ' + schulform}}</b></h2>
+        <hr>
+        <h2><b>{{zeugnis.schueler.vorname + ' ' + zeugnis.schueler.name}}</b></h2>
+        <hr>
     </div>
-    <br/>
-    <div class="table-responsive" *ngIf="printZeugnis">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let printZeugnis of printZeugnis ;trackBy: trackId">
-                <td><a [routerLink]="['../print-zeugnis', printZeugnis.id ]">{{printZeugnis.id}}</a></td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../print-zeugnis', printZeugnis.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'print-zeugnis/'+ printZeugnis.id + '/edit'} }]"
-                                replaceUrl="true"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'print-zeugnis/'+ printZeugnis.id + '/delete'} }]"
-                                replaceUrl="true"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div *ngIf="kopfNotenVisible" style="text-align: center">
+        <b>{{'Sozialverhalten: ' + zeugnis.sozialverhalten + ' Arbeitsverhalten: ' + zeugnis.arbeitsverhalten}}</b>
     </div>
+    <p style="text-align: left">{{'Datum: ' + datum}}</p>
+    <p style="text-align: right ">{{'Klasse: ' + zeugnis.schueler.klasse.name}}</p>
+    <table class="table">
+        <tr>
+            <th>Fach</th>
+            <th>Note</th>
+        </tr>
+        <!--<tr *ngFor="let fach of zeugnis.facher">-->
+            <!--<td>{{fach.fach.name}}</td>-->
+            <!--<td>{{fach.note}}</td>-->
+        <!--</tr>-->
+    </table>
+
 </div>

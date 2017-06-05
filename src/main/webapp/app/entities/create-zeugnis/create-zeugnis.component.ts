@@ -58,14 +58,13 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
     constructor(private fachService: FachMySuffixService,
                 private zeugnisFachMySuffixService: ZeugnisFachMySuffixService,
                 private klassService: KlasseMySuffixService,
-                private klasseFachService: KlasseFachMySuffixService,
                 private createZeugnisService: CreateZeugnisService,
                 private alertService: AlertService,
                 private eventManager: EventManager,
                 private parseLinks: ParseLinks,
                 private principal: Principal,
                 private zeugnisService: ZeugnisMySuffixService,
-                private schuelerService: SchuelerMySuffixService,
+                private router: Router,
                 private lehrerService: LehrerMySuffixService) {
         this.lehrerService = lehrerService;
         this.createZeugnis = [];
@@ -188,6 +187,7 @@ export class CreateZeugnisComponent implements OnInit, OnDestroy {
         }
         return true
     }
+
 }
 
 

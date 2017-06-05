@@ -4,20 +4,12 @@ import { RouterModule } from '@angular/router';
 import { SrmsSharedModule } from '../../shared';
 import {
     PrintZeugnisService,
-    PrintZeugnisPopupService,
     PrintZeugnisComponent,
-    PrintZeugnisDetailComponent,
-    PrintZeugnisDialogComponent,
-    PrintZeugnisPopupComponent,
-    PrintZeugnisDeletePopupComponent,
-    PrintZeugnisDeleteDialogComponent,
     printZeugnisRoute,
-    printZeugnisPopupRoute,
 } from './';
 
 const ENTITY_STATES = [
     ...printZeugnisRoute,
-    ...printZeugnisPopupRoute,
 ];
 
 @NgModule({
@@ -27,22 +19,12 @@ const ENTITY_STATES = [
     ],
     declarations: [
         PrintZeugnisComponent,
-        PrintZeugnisDetailComponent,
-        PrintZeugnisDialogComponent,
-        PrintZeugnisDeleteDialogComponent,
-        PrintZeugnisPopupComponent,
-        PrintZeugnisDeletePopupComponent,
     ],
     entryComponents: [
         PrintZeugnisComponent,
-        PrintZeugnisDialogComponent,
-        PrintZeugnisPopupComponent,
-        PrintZeugnisDeleteDialogComponent,
-        PrintZeugnisDeletePopupComponent,
     ],
     providers: [
         PrintZeugnisService,
-        PrintZeugnisPopupService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

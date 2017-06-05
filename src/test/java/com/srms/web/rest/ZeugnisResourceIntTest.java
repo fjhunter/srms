@@ -5,6 +5,7 @@ import com.srms.SrmsApp;
 import com.srms.domain.Zeugnis;
 import com.srms.repository.KlasseRepository;
 import com.srms.repository.SchuelerRepository;
+import com.srms.repository.ZeugnisFachRepository;
 import com.srms.repository.ZeugnisRepository;
 import com.srms.service.ZeugnisService;
 import com.srms.service.dto.ZeugnisDTO;
@@ -96,10 +97,14 @@ public class ZeugnisResourceIntTest {
 
     @Autowired
     private SchuelerRepository schuelerRepository;
+
+    @Autowired
+    private ZeugnisFachRepository zeugnisFachRepository;
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
-        ZeugnisResource zeugnisResource = new ZeugnisResource(zeugnisService, zeugnisRepository, realZeugnisService, klasseRepository, schuelerRepository);
+        MockitoAnnotations.initMocks(this)
+        ;
+        ZeugnisResource zeugnisResource = new ZeugnisResource(zeugnisService, zeugnisRepository, realZeugnisService, klasseRepository, schuelerRepository, zeugnisFachRepository);
         this.restZeugnisMockMvc = MockMvcBuilders.standaloneSetup(zeugnisResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

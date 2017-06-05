@@ -2,28 +2,31 @@
     <form (submit)="loadFacher()" #formCtrl="ngForm" class="form-control">
         <label>ZeugnisTyp</label>
         <select name="zeugnistyp" [(ngModel)]="selectedZeugnisTyp" required name="typ">
-            <option value="HALBJAHRESZEUGNIS" >HALBJAHRESZEUGNIS</option>
-            <option value="ZEUGNIS" >ZEUGNIS</option>
-            <option value="ABSCHLUSSZEUGNISS" >ABSCHLUSSZEUGNISS</option>
+            <option value="HALBJAHRESZEUGNIS">HALBJAHRESZEUGNIS</option>
+            <option value="ZEUGNIS">ZEUGNIS</option>
+            <option value="ABSCHLUSSZEUGNISS">ABSCHLUSSZEUGNISS</option>
         </select>
         <label>Datum</label>
         <input id="field_datum" type="datetime-local" name="datum" [(ngModel)]="selectedDate"
-               required  />
+               required/>
         <button type="submit" [disabled]="!formCtrl.form.valid" class="badge-primary">Lade Fächer</button>
     </form>
 
     <table class="table table-striped">
         <tr>
-            <th>Schüler </th>
+            <th>Schüler</th>
             <th>Klasse</th>
             <th>Fach</th>
             <th>Note</th>
+            <th>Drucken</th>
         </tr>
         <tr *ngFor="let zeugnis of zeugnise">
             <td>{{zeugnis.schueler.vorname+ ' ' + zeugnis.schueler.name}}</td>
             <td>{{zeugnis.klasse.name}}</td>
             <td>{{zeugnis.fach.name}}</td>
-            <td><input type="number"  [(ngModel)]="zeugnis.note.note" (change)="updateZeugnisNote(zeugnis)"></td>
+            <td><input type="number" [(ngModel)]="zeugnis.note.note" (change)="updateZeugnisNote(zeugnis)"></td>
+            <td ><a [routerLink]="['/print-zeugnis', zeugnis.zeugnis.id]"> <span
+                class="glyphicon glyphicon-print">Drucken</span></a></td>
         </tr>
     </table>
 

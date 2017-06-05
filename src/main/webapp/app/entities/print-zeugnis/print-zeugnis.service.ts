@@ -4,11 +4,12 @@ import { Observable } from 'rxjs/Rx';
 
 import { PrintZeugnis } from './print-zeugnis.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
+import {CompleteZeugnis} from "./complete-zeugnis.model";
 
 @Injectable()
 export class PrintZeugnisService {
 
-    private resourceUrl = 'api/print-zeugnis';
+    private resourceUrl = 'api/zeugnis';
 
     constructor(private http: Http) { }
 
@@ -26,8 +27,8 @@ export class PrintZeugnisService {
         });
     }
 
-    find(id: number): Observable<PrintZeugnis> {
-        return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
+    find(id: number): Observable<CompleteZeugnis> {
+        return this.http.get(`api/getCompleteZeugnis/${id}`).map((res: Response) => {
             return res.json();
         });
     }

@@ -4,8 +4,7 @@
             <i class="fa fa-bars"></i>
         </a>
         <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
-            <span class="logo-img"></span>
-            <span jhiTranslate="global.title" class="navbar-title">Srms</span> <span class="navbar-version">{{version}}</span>
+            <span  class="navbar-title">School Report Managing Software</span>
         </a>
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
@@ -38,12 +37,6 @@
                         <a class="dropdown-item" routerLink="zeugnis-my-suffix" routerLinkActive="active" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
                             <span jhiTranslate="global.menu.entities.zeugnisMySuffix">Zeugnis My Suffix</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="schulform-my-suffix" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.schulformMySuffix">Schulform My Suffix</span>
                         </a>
                     </li>
                     <li>
@@ -92,12 +85,6 @@
                         <a class="dropdown-item" routerLink="create-zeugnis" routerLinkActive="active" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
                             <span jhiTranslate="global.menu.entities.createZeugnis">Create Zeugnis</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="print-zeugnis" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.printZeugnis">Print Zeugnis</span>
                         </a>
                     </li>
                     <li>

@@ -16,7 +16,7 @@ export const printZeugnisRoute: Routes = [
         path: 'print-zeugnis',
         component: PrintZeugnisComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.printZeugnis.home.title'
         },
         canActivate: [UserRouteAccessService]

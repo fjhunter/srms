@@ -5,6 +5,7 @@ import { JhiLanguageService, EventManager } from 'ng-jhipster';
 
 import { LoginService } from './login.service';
 import { StateStorageService } from '../auth/state-storage.service';
+import {Principal} from "../auth/principal.service";
 
 @Component({
     selector: 'jhi-login-modal',
@@ -18,6 +19,7 @@ export class JhiLoginModalComponent implements OnInit, AfterViewInit {
     credentials: any;
 
     constructor(
+        private principal: Principal,
         private eventManager: EventManager,
         private languageService: JhiLanguageService,
         private loginService: LoginService,
@@ -67,6 +69,16 @@ export class JhiLoginModalComponent implements OnInit, AfterViewInit {
             });
             // // previousState was set in the authExpiredInterceptor before being redirected to login modal.
             // // since login is succesful, go to stored previousState and clear previousState
+            this.principal.identity().then((account) => {
+                account.authorities.forEach(authority => {
+                    if(authority == "ROLE_LEHRER") {
+                        this.router.navigateByUrl("create-zeugnis")
+                    } else if(authority == "ROLE_SEKTETERIAT"){
+                        this.router.navigateByUrl("anschrift-my-suffix")
+                    }
+                });
+                console.log(account);
+            });
             // const redirect = this.stateStorageService.getUrl();
             // if (redirect) {
             //     this.router.navigate([redirect]);

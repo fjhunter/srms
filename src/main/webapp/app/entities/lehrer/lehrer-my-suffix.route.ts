@@ -16,7 +16,7 @@ export const lehrerRoute: Routes = [
         path: 'lehrer-my-suffix',
         component: LehrerMySuffixComponent,
         data: {
-            authorities: ['ROLE_USER', 'SEKETERIAT'],
+            authorities: ['ROLE_USER'],
             pageTitle: 'srmsApp.lehrer.home.title'
         },
         canActivate: [UserRouteAccessService]

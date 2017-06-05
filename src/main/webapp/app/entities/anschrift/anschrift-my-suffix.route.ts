@@ -16,7 +16,7 @@ export const anschriftRoute: Routes = [
         path: 'anschrift-my-suffix',
         component: AnschriftMySuffixComponent,
         data: {
-            authorities: ['ROLE_USER', 'SEKETERIAT'],
+            authorities: ['ROLE_USER', 'ROLE_SEKTETERIAT'],
             pageTitle: 'srmsApp.anschrift.home.title'
         },
         canActivate: [UserRouteAccessService]

@@ -46,17 +46,16 @@ export class KopfnotenComponent implements OnInit, OnDestroy {
             (res: ResponseWrapper) => {
                 res.json.forEach(lehrer => {
                     if (lehrer.vorname.toLowerCase() + ' ' + lehrer.namen.toLowerCase() == login.toLowerCase())
-                        this.selectedLehrer = lehrer;
-
-                        this.loadKopfNoten();
+                        this.loadKopfNoten(lehrer);
                 })
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
 
-    loadKopfNoten() {
-        this.kopfnotenService.getKopfNoten(this.selectedLehrer.id).subscribe((res: ResponseWrapper) => {
+    loadKopfNoten(lehrer: LehrerMySuffix) {
+        console.log(lehrer);
+        this.kopfnotenService.getKopfNoten(lehrer.id).subscribe((res: ResponseWrapper) => {
             this.kopfNoten = res.json;
         })
     }

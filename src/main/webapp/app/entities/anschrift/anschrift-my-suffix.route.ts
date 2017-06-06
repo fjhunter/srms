@@ -24,7 +24,7 @@ export const anschriftRoute: Routes = [
         path: 'anschrift-my-suffix/:id',
         component: AnschriftMySuffixDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_SEKTETERIAT'],
             pageTitle: 'srmsApp.anschrift.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -36,7 +36,7 @@ export const anschriftPopupRoute: Routes = [
         path: 'anschrift-my-suffix-new',
         component: AnschriftMySuffixPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_SEKTETERIAT'],
             pageTitle: 'srmsApp.anschrift.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -46,7 +46,7 @@ export const anschriftPopupRoute: Routes = [
         path: 'anschrift-my-suffix/:id/edit',
         component: AnschriftMySuffixPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_SEKTETERIAT'],
             pageTitle: 'srmsApp.anschrift.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -56,7 +56,7 @@ export const anschriftPopupRoute: Routes = [
         path: 'anschrift-my-suffix/:id/delete',
         component: AnschriftMySuffixDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_SEKTETERIAT'],
             pageTitle: 'srmsApp.anschrift.home.title'
         },
         canActivate: [UserRouteAccessService],

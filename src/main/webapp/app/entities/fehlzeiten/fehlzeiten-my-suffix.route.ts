@@ -24,7 +24,7 @@ export const fehlzeitenRoute: Routes = [
         path: 'fehlzeiten-my-suffix/:id',
         component: FehlzeitenMySuffixDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.fehlzeiten.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -36,7 +36,7 @@ export const fehlzeitenPopupRoute: Routes = [
         path: 'fehlzeiten-my-suffix-new',
         component: FehlzeitenMySuffixPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.fehlzeiten.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -46,7 +46,7 @@ export const fehlzeitenPopupRoute: Routes = [
         path: 'fehlzeiten-my-suffix/:id/edit',
         component: FehlzeitenMySuffixPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.fehlzeiten.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -56,7 +56,7 @@ export const fehlzeitenPopupRoute: Routes = [
         path: 'fehlzeiten-my-suffix/:id/delete',
         component: FehlzeitenMySuffixDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.fehlzeiten.home.title'
         },
         canActivate: [UserRouteAccessService],

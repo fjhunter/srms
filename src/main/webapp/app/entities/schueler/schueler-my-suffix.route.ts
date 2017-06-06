@@ -24,7 +24,7 @@ export const schuelerRoute: Routes = [
         path: 'schueler-my-suffix/:id',
         component: SchuelerMySuffixDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.schueler.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -36,7 +36,7 @@ export const schuelerPopupRoute: Routes = [
         path: 'schueler-my-suffix-new',
         component: SchuelerMySuffixPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.schueler.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -46,7 +46,7 @@ export const schuelerPopupRoute: Routes = [
         path: 'schueler-my-suffix/:id/edit',
         component: SchuelerMySuffixPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.schueler.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -56,7 +56,7 @@ export const schuelerPopupRoute: Routes = [
         path: 'schueler-my-suffix/:id/delete',
         component: SchuelerMySuffixDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_LEHRER'],
             pageTitle: 'srmsApp.schueler.home.title'
         },
         canActivate: [UserRouteAccessService],

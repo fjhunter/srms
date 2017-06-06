@@ -162,7 +162,7 @@ public class ZeugnisResource {
     public List<KopfNoten> getKopfnoten(@PathVariable Long id) {
         List<KopfNoten> kopfNotenList = new ArrayList<>();
         klasseRepository.findByLehrerId(id).stream().forEach(klasse -> {
-            schuelerRepository.findByKlasse_Id(klasse.getId()).stream().filter(schueler -> schueler.getSchulform() == Schulform.GYMNASIUM || schueler.getSchulform() == Schulform.REALSCHULE || schueler.getSchulform() == Schulform.HAUPTSCHULE).forEach(schueler -> {
+            schuelerRepository.findByKlasse_Id(klasse.getId()).stream().filter(schueler -> schueler.getSchulform() == Schulform.GYMNASIUM || schueler.getSchulform() == Schulform.REALSCHULE || schueler.getSchulform() == Schulform.HAUPTSCHULE || schueler.getSchulform() == Schulform.FACHOBERSCHULE).forEach(schueler -> {
                 zeugnisRepository.findBySchuelerId(schueler.getId()).stream().filter(zeugnis -> zeugnis.getZeugnistyp() != Zeugnis_typ.ABSCHLUSSZEUGNISS).forEach(zeugnis -> {
                     kopfNotenList.add(new KopfNoten(klasse, schueler, zeugnis));
                 });
